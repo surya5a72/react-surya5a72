@@ -15,6 +15,10 @@ var user ={
 var template = (
   <div>
     <h1> Indecision App </h1>
+    <p> Username :{user.Name} </p>
+    <p> Age :{user.Age} </p>
+    <p> Mobile :{user.Mobile} </p>
+    <p> Designation :{user.Designation} </p>
     <p> this is from react app </p>
   </div>
 );
