@@ -18,17 +18,17 @@ var user ={
   Location:'Rajamahendravaram'
 };
 function getlocation(Location){
-  return Location ? Location : 'Unknow';
+  return Location ? <p> Location : {Location} </p> : <p> Location : {'Unknow'} </p> ;
 }
 var template = (
   <div>
     <h1> {template.Title} </h1>
     <h3> {template.Subtitle} </h3>
     <p> Username :{user.Name.toUpperCase()} </p>
-    <p> Age :{user.Age} </p>
+    { user.Age && user.Age >= 18 && <p> Age :{user.Age} </p> }
     <p> Mobile :{user.Mobile} </p>
     <p> Designation :{user.Designation} </p>
-    <p> Location :{getlocation(user.Location)} </p>
+      {getlocation(user.Location)}
   </div>
 );
 var appRoot = document.getElementById('app');
