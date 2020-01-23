@@ -6,20 +6,29 @@ import './style.css';
 
 
 //render(<EmployeeDetails />, document.getElementById('root'));
+var template ={
+  Title: 'Indecision App',
+  Subtitle: 'Practice Session'
+}
 var user ={
   Name:'Surya',
   Age:28,
   Mobile:9032586092,
-  Designation:'Full Stack Developer'
+  Designation:'Full Stack Developer',
+  Location:'Rajamahendravaram'
 };
+function getlocation(Location){
+  return Location ? Location : 'Unknow';
+}
 var template = (
   <div>
-    <h1> Indecision App </h1>
-    <p> Username :{user.Name} </p>
+    <h1> {template.Title} </h1>
+    <h3> {template.Subtitle} </h3>
+    <p> Username :{user.Name.toUpperCase()} </p>
     <p> Age :{user.Age} </p>
     <p> Mobile :{user.Mobile} </p>
     <p> Designation :{user.Designation} </p>
-    <p> this is from react app </p>
+    <p> Location :{getlocation(user.Location)} </p>
   </div>
 );
 var appRoot = document.getElementById('app');
