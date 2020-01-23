@@ -1,8 +1,11 @@
-var template ={
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+
+const template ={
   Title: 'Indecision App',
   Subtitle: 'Practice Session'
 }
-var user ={
+let user ={
   Name:'Surya',
   Age:28,
   Mobile:9032586092,
@@ -12,7 +15,7 @@ var user ={
 function getlocation(Location){
   return Location ? <p> Location : {Location} </p> : <p> Location : {'Unknow'} </p> ;
 }
-var template = (
+let template = (
   <div>
     <h1> {template.Title} </h1>
     <h3> {template.Subtitle} </h3>
@@ -23,6 +26,6 @@ var template = (
       {getlocation(user.Location)}
   </div>
 );
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 
 render (template, appRoot);
