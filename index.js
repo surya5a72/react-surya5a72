@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import './style.css';
-//import EmployeeDetails from './Components/EmployeeDetails.Component';
-//import EmployeeDetails from './Services/Service';
 
+const AppRoot =document.getElementById('app');
 
-//render(<EmployeeDetails />, document.getElementById('root'));
-//console.log('surya');
+const templaterender =() =>
+{
+  const template = (
+    <div className="container" align="center">
+      <h1> Indecision App</h1>
+      <h3> React Practice App </h3>
+    </div>
+  );
+  render(template, AppRoot);
+};
+
+templaterender();
