@@ -8,24 +8,26 @@ import './style.css';
 //render(<EmployeeDetails />, document.getElementById('root'));
 //console.log('surya');
 
+const AppRoot =document.getElementById('app');
+let visibility = false;
 
-let count = 0;
-const countid='btnid';
-const add = () =>{ 
-  ++count;
-  rendertemplate();
-  console.log(count);
+const showhidedetails = () => {
+  visibility = !visibility;
+  templaterender();
 }
-const appRoot = document.getElementById('app');
-const rendertemplate =() =>{
+
+const templaterender =() =>
+{
   const template = (
-    <div>
-      <h1> Indecision App </h1>
-      <h3> Count : {count}</h3>
-      <button id={countid} className="btnClass" onClick={add}>+{count}</button> 
+    <div className="wrapper">
+      <h1> Indecision App</h1>
+      <h3> React Practice App </h3>
+      <button id="btnshowhide" onClick={showhidedetails} className="btn btn-info"> {visibility ? 'Hide Details' :'Show details'} </button>
+      {visibility && <p>these are the details to show</p>}
     </div>
+
   );
-  render (template, appRoot);
+  render(template, AppRoot);
 };
 
-rendertemplate();
+templaterender();
