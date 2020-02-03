@@ -5,9 +5,10 @@ const AppRoot =document.getElementById('app');
 const options =['one', 'two'];
 
 class IndecisionApp extends React.Component{
-  constructor(){
+  constructor(props){
+    super(props);
     this.state={
-      options:[]
+      options:props.options
     }
 
     this.RemoveAllDetails = this.RemoveAllDetails.bind(this);
@@ -46,11 +47,17 @@ class IndecisionApp extends React.Component{
   }
   
   componentDidMount(){
+    let options = JSON.parse(localStorage.getItem('options'));
+    this.setState(()=> ({options}));
     console.log('componentDidMount');
   }
   
-  componentDidUpdate(){
-    console.log('componentDidUpdate');
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.options.length !== this.state.options.length){
+      let OptJson = JSON.stringify(this.state.options);
+      localStorage.setItem('options', OptJson);
+      console.log('componentDidUpdate');
+    }
   }
   
   componentWillUnmount(){
@@ -233,6 +240,6 @@ const User =(props) =>{
 
 const templaterender = () =>{  
   //render(<User name="Surya" age={28} />, AppRoot);
-  render(<IndecisionApp />, AppRoot);
+  render(<IndecisionApp options={[]}/>, AppRoot);
 }
 templaterender();
