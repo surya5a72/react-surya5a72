@@ -48,7 +48,9 @@ class IndecisionApp extends React.Component{
   
   componentDidMount(){
     let options = JSON.parse(localStorage.getItem('options'));
-    this.setState(()=> ({options}));
+    if(options){
+      this.setState(()=> ({options}));
+    }
     console.log('componentDidMount');
   }
   
@@ -61,7 +63,7 @@ class IndecisionApp extends React.Component{
   }
   
   componentWillUnmount(){
-    console.log('componentDidMount');
+    console.log('componentwillunMount');
   }
 
   render(){
