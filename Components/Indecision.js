@@ -8,19 +8,11 @@ import {Addoption} from './Addoption';
 
 
 export class IndecisionApp extends React.Component{
-  constructor(props){
-    super(props);
-    this.state={
-      options:props.options
-    }
-
-    this.RemoveAllDetails = this.RemoveAllDetails.bind(this);
-    this.Whattodo = this.Whattodo.bind(this);
-    this.AddOption = this.AddOption.bind(this);
-    this.RemoveOption = this.RemoveOption.bind(this);
+  state = {
+      options:this.props.options
   }
 
-  RemoveOption(option){
+  RemoveOption = (option) =>{
     this.setState((prevState) =>({
       options: prevState.options.filter((opt)=> option !== opt )
       //arrow functions can be used in two ways examples with return is below and without using return is above.
@@ -30,16 +22,16 @@ export class IndecisionApp extends React.Component{
     }));
   }
 
-  RemoveAllDetails(){
+  RemoveAllDetails = () =>{
     this.setState(() =>({options:[]}));
   }
 
-  Whattodo(){
+  Whattodo = () => {
     let selopt= Math.floor(Math.random() * this.state.options.length);
     console.log(selopt)
   }
 
-  AddOption(option){
+  AddOption = (option) => {
     if(!option){
       return "Enter some value";
     }

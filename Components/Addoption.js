@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 export class Addoption extends React.Component {
-  constructor(props){
-    super(props);
-    this.state={
-      error:''
-    }
-    this.SubmitOption = this.SubmitOption.bind(this);
+  state = {
+      error:undefined
   }
 
-  SubmitOption(e){
+  SubmitOption = (e) => {
     e.preventDefault();
     let option = e.target.elements.opt.value.trim();    
     const error = this.props.AddOption(option);
