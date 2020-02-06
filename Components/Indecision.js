@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
 import {Header} from './Header';
 import {Action} from './Action';
 import {Options} from './Options';
+import {OptionModal} from './OptionModal';
 import {Addoption} from './Addoption';
 
 
 export class IndecisionApp extends React.Component{
   state = {
-      options:this.props.options
+      options:this.props.options,
+      isModalVisible:false,
+      itemval:null
   }
 
   RemoveOption = (option) =>{
@@ -26,9 +28,21 @@ export class IndecisionApp extends React.Component{
     this.setState(() =>({options:[]}));
   }
 
-  Whattodo = () => {
+  Whattodo = (prevState) => {
     let selopt= Math.floor(Math.random() * this.state.options.length);
+    this.setState(()=>({ 
+      isModalVisible : !prevState.isModalVisible,
+      itemval:this.state.options[selopt]
+    }));
     console.log(selopt)
+  }
+
+  closeModal = () =>{
+    this.setState((prevState) => {
+      return{
+        isModalVisible: !prevState.isModalVisible
+      }
+    })
   }
 
   AddOption = (option) => {
@@ -70,9 +84,12 @@ export class IndecisionApp extends React.Component{
               Whattodo ={this.Whattodo}
               hasoptions={this.state.options.length > 0}
       />
-
+      
       <Options defaultoptions={this.state.options} RemoveOption = {this.RemoveOption}/>
       <Addoption AddOption ={this.AddOption}/>
+      <OptionModal showmodal = {this.state.isModalVisible} close={this.closeModal} item={this.state.itemval}>
+      <h1> hello</h1>
+      </OptionModal>
     </div>
     );
   }
